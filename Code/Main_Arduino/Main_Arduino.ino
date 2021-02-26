@@ -32,12 +32,16 @@ void loop()
     // read the incoming byte:
     inByte = BTserial.read();
 
-
     if(inByte == 'O'){
-       pos = OPEN;
-       myservo.write(pos);              
+      //for(pos = CLOSED; pos < OPEN; pos += 1){
+       //myservo.write(pos);              
+       //Serial.println(inByte);
+       //delay(5);
+      //}     
+       pos = OPEN;                   
+       myservo.write(pos);                         
        Serial.println(inByte);
-      delay(15);
+       delay(15);
     }
     if(inByte == 'C'){
        pos = CLOSED;
@@ -45,42 +49,5 @@ void loop()
        Serial.println(inByte);
       delay(15);
     }
-
-    // say what you got:
-    //Serial.print("I received: ");
-    //Serial.println(inByte);
   }
-
-
-  /*
-   if(BTserial.available() > 0){
-
-    inByte = BTserial.read(); // read the incoming data
-    serialFlush();
-    Serial.println(inByte);
-    if(inByte = 'O'){
-       pos = OPEN;
-       myservo.write(pos);              
-       Serial.println(inByte);
-      delay(15);
-    }
-    if(inByte = 'C'){
-       pos = CLOSED;
-       myservo.write(pos);              
-       Serial.println(inByte);
-      delay(15);
-    }
-   }
-   delay(100); // delay for 1/10 of a second
-
-   */
 }
-
-
-
-
-void serialFlush(){
-  while(Serial.available() > 0) {
-    char t = Serial.read();
-  }
-}   
